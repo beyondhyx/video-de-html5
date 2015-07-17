@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>boucle</title>
+  </head>
+  <body>
+    <div>
+      <video id="video" controls="" autoplay="">
+        <source src="flux2.mp4" type="video/mp4" />
+      </video>
+      <audio id="audio" controls="" autoplay="" >
+        <source src="GoPro.m4a" type="audio/mp4" />
+      </audio>
+      <br />
+      <button onclick="StartVideoTime()" style="height:50px;width:100px" >video start time</button>
+      <button onclick="EndVideoTime()" style="height:50px;width:100px" >video end time</button>
+      <button onclick="StartAudioTime()" style="height:50px;width:100px" >audio start time</button>
+      <button onclick="EndAudioTime()" style="height:50px;width:100px" >audio end time</button>
+      <button onclick="Reset()" style="height:50px;width:100px" >reset</button>
+      <p>
+        Start Video Time: <span id="vstart"></span>
+        <br />
+        End Video Time: <span id="vend"></span>
+        <br />
+        Start Audio Time: <span id="astart"></span>
+        <br />
+        End Audio Time: <span id="aend"></span>
+      </p>
+    </div>
+
+    <script type="text/javascript">
+      var myVideo=document.getElementById("video");
+      var myAudio=document.getElementById("audio");
+      var v_starttime = 0;
+      var a_starttime = 0;
+      var v_endtime = myVideo.duration;
+      var a_endtime = myAudio.duration;
+
+      myVideo.ontimeupdate = function()
+      {
+      if (myVideo.currentTime >= v_endtime)
+      {
+      myVideo.currentTime = v_starttime;}
+      }
+
+      function StartVideoTime()
+      {
+      v_starttime = myVideo.currentTime;
+      document.getElementById("vstart").innerHTML = myVideo.currentTime;
+      }
+
+      function EndVideoTime()
+      {
+      v_endtime = myVideo.currentTime;
+      document.getElementById("vend").innerHTML = myVideo.currentTime;
+      }
+
+      myAudio.ontimeupdate = function()
+      {
+      if (myAudio.currentTime >= a_endtime)
+      {
+      myAudio.currentTime = a_starttime;}
+      }
+
+      function StartAudioTime()
+      {
+      a_starttime = myAudio.currentTime;
+      document.getElementById("astart").innerHTML = myAudio.currentTime;
+      }
+
+      function EndAudioTime()
+      {
+      a_endtime = myAudio.currentTime;
+      document.getElementById("aend").innerHTML = myAudio.currentTime;
+      }
+      function Reset()
+      {
+      v_starttime = 0;
+      v_endtime = myVideo.duration;
+      a_starttime = 0;
+      a_endtime = myAudio.duration;
+      myVideo.currentTime = v_starttime;
+      myAudio.currentTime = a_starttime;
+      document.getElementById("vstart").innerHTML = "";
+      document.getElementById("vend").innerHTML = "";
+      document.getElementById("astart").innerHTML = "";
+      document.getElementById("aend").innerHTML = "";
+      }
+
+    </script>
+  </body>
+</html>
+
