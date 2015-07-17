@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AvatarFlight</title>
+  </head>
+  <body>
+    <div>
+      <video id="video1" controls="" autoplay="">
+        <source src="AvatarFlight.mp4" type="video/mp4" />
+        <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English" default="default"/>
+      </video>
+      <br />
+      <button onclick="PlayPause()" style="height:50px;width:100px" >play/pause</button>
+    </div>
+
+    <script type="text/javascript">
+      var myVideo=document.getElementById("video1");
+
+      function PlayPause()
+      {
+      if (myVideo.paused)
+      myVideo.play();
+      else
+      myVideo.pause();
+      }
+
+    </script>
+  </body>
+</html>
