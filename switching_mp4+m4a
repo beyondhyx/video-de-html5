@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>seamless switching</title>
+  </head>
+  <body>
+    <div>
+      <video id="video1" controls="" autoplay="">
+        <source src="Dishonored.mp4" type="video/mp4" />
+      </video><video
+         id="video2" controls="" autoplay="" style ="width:0px">
+        <source src="GoPro.mp4" type="video/mp4" />
+      </video>
+      <br />
+      <audio id="audio1" autoplay="">
+        <source src="Dishonored.m4a" type="audio/mp4" />
+      </audio>
+      <audio id="audio2" autoplay="" volume="0">
+        <source src="GoPro.m4a" type="audio/mp4" />
+      </audio>
+      <br />
+      <button onclick ="Switch()" style="height:50px;width:100px" >Switch</button>
+    </div>
+
+    <script type="text/javascript">
+
+      var myVideo1=document.getElementById("video1");
+      var myVideo2=document.getElementById("video2");
+      var myAudio1=document.getElementById("audio1");
+      var myAudio2=document.getElementById("audio2");
+
+      function Switch()
+      {
+
+      if(myVideo1.style.width == '0px')
+      {
+      myAudio1.volume = myAudio2.volume;
+      myAudio2.volume = 0;
+      myVideo1.style.width = myVideo2.style.width;
+      myVideo2.style.width = '0px';
+      }
+      else
+      {
+      myAudio2.volume = myAudio1.volume;
+      myAudio1.volume = 0;
+      myVideo2.style.width = myVideo1.style.width;
+      myVideo1.style.width = '0px';
+      }
+      }
+    </script>
+  </body>
+</html>
+
