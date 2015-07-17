@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <title> New Document </title>
+    <style>
+      div{ display:inline}
+    </style>
+    <div>
+
+      <div id ="div" style ="background:white;position:absolute;cursor:pointer;padding:0;height:300px;weight:600px;float:left">
+        <video id="video" controls ="" autoplay="" style="height:300px;weight:600px;margin:0">
+          <source src="AvatarFlight.mp4" type="video/mp4" />
+        </video>
+        <img id="image" src="ILTQq.png" style="position:absolute;cursor:pointer;padding:0;height:300px;weight:600px;opacity:0.5"></img>
+      </div>   
+      <!--<div style ="position:absolute;float:left">
+        <img id="image" src="ILTQq.png" style="opacity:0.5"></img>
+      </div>-->
+
+
+    </div>
+    <script type="text/javascript">
+      window.onload=function(){
+      var myInner = document.getElementById("div");
+      var myVideo = document.getElementById("video");
+
+      if (myVideo.style.cssFloat)
+      {
+      myVideo.style.cssFloat="right"
+      }
+      else
+      {myVideo.style.styleFloat="right"}
+      myInner.appendChild(myVideo);
+      document.body.appendChild(myInner);
+
+      //var a1a = setInterval(moves,10);
+      var x = 1;
+      var y = 1;
+
+      function moves(){
+      myVideo.play();
+      var tops = myInner.offsetTop
+      var lefts = myInner.offsetLeft
+
+      if (lefts>=document.documentElement.clientWidth-myInner.offsetWidth||lefts<=0)
+      {
+      x=-x
+      }
+
+      if (tops>=document.documentElement.clientHeight-myInner.offsetHeight||tops<=0)
+      {
+      y=-y
+      }
+
+      tops+=y;
+      lefts+=x;
+
+      myInner.style.top=tops+"px"
+      myInner.style.left=lefts+"px"
+      }
+
+      myInner.onmouseover=function(){
+      clearInterval(a1a);
+      }
+
+      myInner.onmouseout=function(){
+      a1a =setInterval(moves,10);
+      }
+      }
+    </script>
+  </body>
+</html>
