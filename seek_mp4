@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AvatarFlight</title>
+  </head>
+  <body>
+    <div>
+      <video id="video1" controls="" autoplay="">
+        <source src="AvatarFlight.mp4" type="video/mp4" />
+      </video>
+      <br />
+      <button onclick="PlayPause()" style="height:50px;width:100px" >play/pause</button>
+      <button onclick="SetTime()" style="height:50px;width:100px" >seek</button>
+    </div>
+
+    <script type="text/javascript">
+      var myVideo=document.getElementById("video1");
+
+      function PlayPause()
+      {
+      if (myVideo.paused)
+      myVideo.play();
+      else
+      myVideo.pause();
+      }
+
+      function SetTime()
+      {
+      myVideo.currentTime=120;
+      }
+
+    </script>
+  </body>
+</html>
+
