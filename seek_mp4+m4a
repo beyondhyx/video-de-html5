@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dishonored in Real Life - Choose How Naomi Kills</title>
+  </head>
+  <body>
+    <div>
+      <video id="video1" controls="" autoplay="">
+        <source src="Dishonored.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <audio id="audio1" autoplay="">
+        <source src="Dishonored.m4a" type="audio/mp4" />
+        Your browser does not support HTML5 audio.
+      </audio>
+      <br />
+      <button onclick="playPause()"  style="height:50px;width:100px" >play/pause</button>
+      <button onclick="SetTime()" style="height:50px;width:100px" >seek</button>
+    </div>
+
+    <script type="text/javascript">
+      var myVideo=document.getElementById("video1");
+      var myAudio=document.getElementById("audio1");
+
+      function playPause()
+      {
+
+      if (myVideo.paused)
+
+      {myVideo.play();
+      myAudio.play();}
+
+      else
+
+      {myVideo.pause();
+      myAudio.pause();}
+
+      }
+
+      function SetTime()
+      {
+      myVideo.currentTime=120;
+      myAudio.currentTime=120;
+      }
+
+    </script>
+  </body>
+</html>
