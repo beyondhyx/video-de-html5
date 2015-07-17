@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    </head>
+  <body>
+  <title> New Document </title>
+    <style>
+      div{ display:inline}
+    </style>
+    <div>
+    <div id ="div" style ="position:absolute;cursor:pointer;padding:0;height:200px;weight:400px;float:left">
+       <video id="video" controls ="" autoplay="" style="height:200px;weight:400px;margin:0">
+         <source src="AvatarFlight.mp4" type="video/mp4" />
+       </video>
+    </div>
+    <div id ="div2" style ="position:absolute;cursor:pointer;padding:0;height:200px;weight:400px:">
+       <video id="video2" controls ="" autoplay="" style="height:200px;weight:400px;margin:0">
+         <source src="GoPro.mp4" type="video/mp4" />
+       </video>
+      <audio id="audio" autoplay="">
+        <source src="GoPro.m4a" type="audio/mp4" />
+      </audio>
+    </div>
+    </div>
+    <script type="text/javascript">
+      window.onload=function(){
+      var myInner = document.getElementById("div");
+      var myVideo = document.getElementById("video");
+      var myInner2 = document.getElementById("div2");
+      var myVideo2 = document.getElementById("video2");
+      var myAudio = document.getElementById("audio");
+
+      if (myVideo.style.cssFloat)
+      {
+      myVideo.style.cssFloat="right"
+      }
+      else
+      {myVideo.style.styleFloat="right"}
+      myInner.appendChild(myVideo);
+      document.body.appendChild(myInner);
+
+      if (myVideo2.style.cssFloat)
+      {
+      myVideo2.style.cssFloat="right"
+      }
+      else
+      {myVideo2.style.styleFloat="right"}
+      myInner2.appendChild(myVideo2);
+      document.body.appendChild(myInner2);
+
+      var a1a = setInterval(moves,10);
+      var a1a2 = setInterval(moves2,1);
+      var x = 1;
+      var y = 1;
+
+      function moves(){
+      myVideo.play();
+      var tops = myInner.offsetTop
+      var lefts = myInner.offsetLeft
+
+      if (lefts>=document.documentElement.clientWidth-myInner.offsetWidth||lefts<=0)
+      {
+      x=-x
+      }
+
+      if (tops>=document.documentElement.clientHeight-myInner.offsetHeight||tops<=0)
+        {
+        y=-y
+        }
+
+        tops+=y;
+        lefts+=x;
+
+        myInner.style.top=tops+"px"
+        myInner.style.left=lefts+"px"
+        }
+
+        function moves2(){
+        myVideo2.play();
+        myAudio.play();
+        var tops = myInner2.offsetTop
+        var lefts = myInner2.offsetLeft
+
+        if (lefts>=document.documentElement.clientWidth-myInner2.offsetWidth||lefts<=0)
+        {
+        x=-x
+        }
+
+        if (tops>=document.documentElement.clientHeight-myInner2.offsetHeight||tops<=0)
+          {
+          y=-y
+          }
+
+          tops+=y;
+          lefts+=x;
+
+          myInner2.style.top=tops+"px"
+          myInner2.style.left=lefts+"px"
+          }
+
+          myInner.onmouseover=function(){
+          clearInterval(a1a);
+          }
+          myInner2.onmouseover=function(){
+          clearInterval(a1a2);
+          }
+
+          myInner.onmouseout=function(){
+          a1a =setInterval(moves,10);
+          }
+          myInner2.onmouseout=function(){
+          a1a2 =setInterval(moves2,1);
+          }
+          
+          }
+        </script>
+  </body>
+</html>
