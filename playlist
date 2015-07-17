@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>playlist</title>
+  </head>
+  <body>
+    <div>
+      <input type="file" id="files" name="files[]" multiple="" />;
+      <br />
+      <video id="video1" controls="">
+      </video><video
+        id="video2" controls="" style ="width:0px" >
+      </video>
+
+    </div>
+
+    <script type="text/javascript">
+
+      document.getElementById('files').addEventListener('change', handleFileSelect, false);
+      var myVideo1=document.getElementById("video1");
+      var myVideo2=document.getElementById("video2");
+
+      function handleFileSelect(eve){
+
+      var files = eve.target.files;
+      var i = 0;
+      myVideo1.src= files[i].name;
+      myVideo1.play();
+      myVideo2.src= files[i+1].name;
+
+      myVideo1.ontimeupdate = function(){
+      if(myVideo1.currentTime >= myVideo1.duration-3)
+      {
+      myVideo2.play();
+      myVideo2.volume=0;
+      }
+      }
+
+      myVideo1.onended = function(){
+      i++;
+      myVideo2.style.width = myVideo1.style.width;
+      myVideo1.style.width = 0;
+      myVideo2.currentTime = 0;
+      myVideo2.volume = myVideo1.volume;
+      myVideo1.src=files[i+1].name;
+      }
+
+      myVideo2.ontimeupdate = function(){
+      if(myVideo2.currentTime >= myVideo2.duration-3)
+      {
+      myVideo1.play();
+      myVideo1.volume=0;
+      }
+      }
+
+      myVideo2.onended = function(){
+      i++;
+      myVideo1.style.width = myVideo2.style.width;
+      myVideo2.style.width = 0;
+      myVideo1.currentTime = 0;
+      myVideo1.volume = myVideo2.volume;
+      myVideo2.src=files[i+1].name;
+      }
+
+      }
+
+
+    </script>
+  </body>
+</html>
+
