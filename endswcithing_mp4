@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>seamless switching</title>
+  </head>
+  <body>
+    <div>
+      <video id="video1" controls="" autoplay="">
+        <source src="flux1.mp4" type="video/mp4" />
+      </video><video 
+        id="video2" controls="" style ="width:0px" >
+        <source src="flux2.mp4" type="video/mp4" />
+      </video>
+      <br />
+      <button onclick ="goend()" style="height:50px;width:100px" >GoEnd</button>
+    </div>
+
+    <script type="text/javascript">
+
+      var myVideo1=document.getElementById("video1");
+      var myVideo2=document.getElementById("video2");
+
+      myVideo1.onended = function()
+      {
+      myVideo1.src = "flux2.mp4";
+      myVideo1.play();
+      };
+
+      function goend()
+      {
+      myVideo1.currentTime = myVideo1.duration - 5;
+      }
+
+
+
+    </script>
+  </body>
+</html>
+
